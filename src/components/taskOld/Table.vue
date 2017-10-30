@@ -4,7 +4,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { QUERY_CHANGE, EDIT, LIST } from 'store/taskOld/keys'
+import iview from 'iview'
+import { QUERY_CHANGE, EDIT, LIST, DELETE_TASK } from 'store/taskOld/keys'
 import extraExpand from './ExtraExpand'
 
 export default {
@@ -123,8 +124,8 @@ export default {
           width: 160,
           render: (h, { row }) => {
             return <div>
-              <span style="margin-right:8px"><i-button type="info" size="small">派任务</i-button></span>
-              <span><i-button size="small" type="primary" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
+              <span style="margin-right:8px"><i-button size="small" type="primary" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
+              <span><i-button type="error" size="small" onClick={() => this.delete(row)}>删除</i-button></span>
             </div>
           }
         }
@@ -135,6 +136,18 @@ export default {
   methods: {
     edit (uuid) {
       this.$store.dispatch(EDIT, uuid)
+    },
+    delete (row) {
+      iview.Modal.confirm({
+        title: '删除工单',
+        content: `<p>确认删除工单吗？</p>`,
+        onOk: () => {
+          this.$store.dispatch(DELETE_TASK, row.uuid)
+          this.$store.dispatch(LIST)
+        },
+        onCancel: () => {
+        }
+      })
     }
   },
   created () {

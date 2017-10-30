@@ -3,9 +3,8 @@
 </template>
 
 <script>
-import iview from 'iview'
 import { mapState } from 'vuex'
-import { EDIT, DELETE_MERCHANT, LIST } from 'store/company/keys'
+import { EDIT, LIST } from 'store/company/keys'
 
 export default {
   computed: {
@@ -77,11 +76,10 @@ export default {
         },
         {
           title: '操作',
-          width: 150,
+          width: 80,
           render: (h, { row }) => {
             return <div>
               <span style="margin-right:8px"><i-button type="primary" size="small" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
-              <span><i-button type="error" size="small" onClick={() => this.delete(row)}>删除</i-button></span>
             </div>
           }
         }
@@ -92,18 +90,6 @@ export default {
   methods: {
     edit (uuid) {
       this.$store.dispatch(EDIT, uuid)
-    },
-    delete (row) {
-      iview.Modal.confirm({
-        title: '删除商户',
-        content: `<p>确认删除商户 ${row.name} 吗？</p>`,
-        onOk: () => {
-          this.$store.dispatch(DELETE_MERCHANT, row.uuid)
-          this.$store.dispatch(LIST)
-        },
-        onCancel: () => {
-        }
-      })
     }
   },
   created () {

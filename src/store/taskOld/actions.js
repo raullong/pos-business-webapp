@@ -1,4 +1,4 @@
-import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, SAVE } from './keys'
+import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, SAVE, DELETE_TASK } from './keys'
 
 import * as api from 'api/taskOld'
 
@@ -21,7 +21,6 @@ export default {
     try {
       commit(CREATE, { status: 0 })
       if (!form.merchantName) throw new Error('请填写商户名称')
-      if (!form.taskTime) throw new Error('请填写维护时间')
       await api.create(form)
       dispatch(LIST)
       commit(MODAL, { name: 'form', show: false })
@@ -41,11 +40,14 @@ export default {
       iview.Message.error(message)
     }
   },
+  async [DELETE_TASK] ({ state, dispatch }, uuid) {
+    await api.del(uuid)
+    dispatch(LIST)
+  },
   async [SAVE] ({ state, commit, dispatch }) {
     const form = { ...state.form }
     try {
       commit(CREATE, { status: 0 })
-      if (!form.username) throw new Error('请填写姓名')
       await api.save(form)
       dispatch(LIST)
       commit(MODAL, { name: 'form', show: false })

@@ -40,14 +40,21 @@ export default {
           title: '商户名称',
           render: (h, { row }) => {
             const merchant = row.merchant
-            return <span>{merchant.name}</span>
+            return merchant ? <span>{merchant.name}</span> : ''
+          }
+        },
+        {
+          title: '商户编码',
+          render: (h, { row }) => {
+            const merchant = row.merchant
+            return merchant ? <span>{merchant.code}</span> : ''
           }
         },
         {
           title: '终端编码',
           render: (h, { row }) => {
             const merchant = row.merchant
-            return <span>{merchant.machineCode}</span>
+            return merchant ? <span>{merchant.machineCode}</span> : ''
           }
         },
         {

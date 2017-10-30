@@ -15,3 +15,5 @@ export const FORM_CHANGE = prefix + 'form/change'
 export const SAVE = prefix + 'save'
 
 export const MODIFY = prefix + 'modify'
+
+export const DELETE_TASK = prefix + 'del'

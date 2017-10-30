@@ -11,8 +11,8 @@
   export default {
     computed: {
       ...mapState({
-        loading: ({ dispatch }) => dispatch.loading.create,
-        isEdit: ({ dispatch }) => dispatch.isEdit
+        loading: ({ taskOld }) => taskOld.loading.create,
+        isEdit: ({ taskOld }) => taskOld.isEdit
       }),
       sureName () {
         return this.isEdit ? '修改' : '创建'
