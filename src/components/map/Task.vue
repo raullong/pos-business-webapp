@@ -1,7 +1,6 @@
 <template lang="pug">
   .appoint(v-if="appointDisplay")
     .title 派任务
-
 </template>
 
 <script>

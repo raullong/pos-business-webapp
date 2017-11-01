@@ -1,5 +1,5 @@
 <template lang="pug">
-  .app
+  .app__header
     Row
       Col(span="18")
         .logo__title POS商户业务管理系统
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .app
+  .app__header
     height: 70px
     background-color: #124971
     color: #fff

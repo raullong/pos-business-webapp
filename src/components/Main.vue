@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
   AppHeader
-  .layout
+  .app__layout
     Menu(@on-select="menuChange", :active-name="$router.name", :theme="theme" :width="this.menuWidth")
       Menu-item(name="company")
         Icon(type="ios-home-outline")

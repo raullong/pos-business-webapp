@@ -1,7 +1,6 @@
 <template lang="pug">
-  .map
-    .wrap(style="display:none;")
-      app-market-info(:infoData="infoData" ref="info")
+  .app__map
+    app-market-info(:infoData="infoData" ref="info")
 </template>
 
 <script>
@@ -15,12 +14,12 @@ const loadScript = key => new Promise((resolve, reject) => {
   const callback = `CALLBACK_${Date.now()}`
   window[callback] = () => resolve(window.AMap)
   const script = document.createElement('script')
-  script.src = `//webapi.amap.com/maps?v=1.3&key=${key}&callback=${callback}`
+  script.src = `//webapi.amap.com/maps?v=1.4.1&key=${key}&callback=${callback}`
   document.body.appendChild(script)
 })
 export default {
   components: { AppMarketInfo },
-  name: 'map',
+  name: 'app__map',
   data () {
     return {
       map: null,
@@ -38,8 +37,7 @@ export default {
   methods: {
     async init () {
       AMap = await loadScript('f88c5e8571e8f0964f2f3e0ced1b0c74')
-      this.map = new AMap.Map(this.$el, {resizeEnable: true, zoom: 6, doubleClickZoom: false})
-      this.map.setCity('昆明')
+      this.map = new AMap.Map(this.$el, {resizeEnable: true, zoom: 12, doubleClickZoom: false, center: [102.711564, 25.037576]})
       this.map.setStatus({ scrollWheel: true })
       this.map.setMapStyle('amap://styles/blue')
       this.map.plugin(['AMap.TooBar'], () => {
@@ -113,6 +111,3 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-@import './style/map'
-</style>
