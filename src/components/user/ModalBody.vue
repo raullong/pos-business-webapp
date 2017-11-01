@@ -2,7 +2,7 @@
   Form(:label-width="72")
     Spin(v-if="loading", fix)
     Form-item(label="用户电话")
-      Input(:value="form.mobile", @on-change="e => change('mobile', e.target.value)", :disabled="isEdit")
+      Input(:value="form.mobile", @on-change="e => change('mobile', e.target.value)")
     Form-item(label="用户姓名")
       Input(:value="form.username", @on-change="e => change('username', e.target.value)")
     Form-item(label="用户昵称")
