@@ -8,6 +8,7 @@ const form = {
   password: '',
   status: 1,
   type: 1,
+  superStar: 0,
   position: {},
   client: ''
 }
@@ -18,7 +19,8 @@ export default {
     size: 10,
     searchKey: '',
     status: '',
-    type: ''
+    type: '',
+    superStar: ''
   },
   modal: {
     form: false

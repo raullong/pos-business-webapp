@@ -18,7 +18,22 @@ export default {
       const columns = [
         {
           title: '序号',
-          type: 'index'
+          type: 'index',
+          width: 60
+        },
+        {
+          title: '明星员工',
+          key: 'superStar',
+          align: 'center',
+          filters: [
+            { label: '是', value: 1 },
+            { label: '否', value: 0 }
+          ],
+          filterRemote: value => this.$store.dispatch(QUERY_CHANGE, { key: 'superStar', value: value.join(',') }),
+          render: (h, { row }) => {
+            const color = row.superStar === 0 ? '#ece9e9' : 'red'
+            return <icon type="star" color={color} size="18"></icon>
+          }
         },
         {
           title: '用户姓名',
@@ -34,6 +49,7 @@ export default {
         },
         {
           title: '用户状态',
+          width: 120,
           align: 'center',
           filters: [
             { label: '注销', value: 0 },
@@ -48,6 +64,7 @@ export default {
         },
         {
           title: '用户类型',
+          width: 120,
           filters: [],
           filterRemote: value => this.$store.dispatch(QUERY_CHANGE, { key: 'type', value: value.join(',') }),
           render: (h, { row }) => {
@@ -57,14 +74,6 @@ export default {
         {
           title: '创建时间',
           key: 'createTime'
-        },
-        {
-          title: '登录次数',
-          key: 'loginNum'
-        },
-        {
-          title: '最后一次登陆时间',
-          key: 'lastTime'
         },
         {
           title: '操作',

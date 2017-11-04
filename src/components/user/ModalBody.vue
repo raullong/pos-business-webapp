@@ -20,6 +20,10 @@
       RadioGroup(v-model="form.status")
         Radio(label="0") 注销
         Radio(label="1") 正常
+    Form-item(label="明星员工")
+      RadioGroup(v-model="form.superStar")
+        Radio(label="0") 否
+        Radio(label="1") 是
 </template>
 <script>
   import { mapState } from 'vuex'
