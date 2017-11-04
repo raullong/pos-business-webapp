@@ -1,18 +1,19 @@
 import _ from 'lodash'
 
 const form = {
+  uuid: '',
   title: '',
   content: '',
   type: '',
-  flag: 0
+  urgency: 0
 }
 export default {
-  list: [],
-  total: 0,
+  list: {},
   query: {
     page: 1,
     size: 10,
-    searchKey: ''
+    searchKey: '',
+    urgency: ''
   },
   modal: {
     form: false
@@ -20,8 +21,7 @@ export default {
   isEdit: false,
   loading: {
     create: false,
-    edit: false,
-    resetPassword: false
+    edit: false
   },
   _form: _.cloneDeep(form),
   form: _.cloneDeep(form)

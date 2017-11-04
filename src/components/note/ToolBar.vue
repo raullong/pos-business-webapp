@@ -4,16 +4,18 @@
       Col(:span="12")
         Form(:label-width="80" :model="query")
           Form-item(label="综合查询：")
-            Input(placeholder="请输入内容、内容拼音、创建人模糊查询",  v-model="query.searchKey", @on-enter="search", icon="ios-search-strong")
+            Input(placeholder="请输入标题或内容模糊查询",  v-model="query.searchKey", @on-enter="search", icon="ios-search-strong")
+              Button(slot="append" @click="search") 查询
       Col(:span="12")
         Form(:label-width="100")
           Form-item(style="text-align:right")
-            Button(type="primary" @click="search") 查询
             Button(type="primary" @click="open" style="margin-left:15px") 创建公告
             Button(type="ghost" @click="clear" style="margin-left:15px") 刷新
 </template>
 <script>
 import { mapState } from 'vuex'
+import { QUERY_CHANGE, LIST, MODAL } from 'store/note/keys'
+
 export default {
   data () {
     return {
@@ -27,15 +29,14 @@ export default {
   },
   methods: {
     search () {
-      this.$store.dispatch('note/query/change', { key: this.searchKey, value: this.searchKey })
+      this.$store.dispatch(QUERY_CHANGE, { key: this.searchKey, value: this.searchKey })
     },
     open () {
-      this.$store.commit('note/modal', { name: 'form', show: true })
+      this.$store.commit(MODAL, { name: 'form', show: true })
     },
     clear () {
-      this.query.searchKey = ''
-      this.query.page = 1
-      this.$store.dispatch('note/list')
+      this.$store.commit(QUERY_CHANGE, { key: 'searchKey', value: '' })
+      this.$store.dispatch(LIST)
     }
   }
 }

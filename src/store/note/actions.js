@@ -1,4 +1,4 @@
-import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, SAVE } from './keys'
+import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, SAVE, DELETE_NOTE } from './keys'
 
 import * as api from 'api/note'
 
@@ -46,7 +46,6 @@ export default {
     const form = { ...state.form }
     try {
       commit(CREATE, { status: 0 })
-      if (!form.username) throw new Error('请填写姓名')
       await api.save(form)
       dispatch(LIST)
       commit(MODAL, { name: 'form', show: false })
@@ -55,5 +54,9 @@ export default {
       commit(CREATE, { status: -1 })
       iview.Message.error(message)
     }
+  },
+  async [DELETE_NOTE] ({ state, dispatch }, uuid) {
+    await api.del(uuid)
+    dispatch(LIST)
   }
 }

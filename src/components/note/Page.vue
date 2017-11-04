@@ -3,9 +3,9 @@
     Page(
       show-sizer,
       show-total,
-      :total="total",
-      :current="page",
-      :page-size="size",
+      :total="list.totalSize",
+      :current="list.curPage",
+      :page-size="list.curSize",
       placement="top",
       @on-change="page => queryChange('page', page)"
       @on-page-size-change="size => queryChange('size', size)")
@@ -16,9 +16,7 @@ import { QUERY_CHANGE } from 'store/note/keys'
 export default {
   computed: {
     ...mapState({
-      page: ({note}) => note.query.page,
-      size: ({note}) => note.query.size,
-      total: ({note}) => note.total
+      list: ({ note }) => note.list
     })
   },
   methods: {

@@ -1,9 +1,12 @@
 <template lang="pug">
   .table
-    Table(:columns="columns" :data="note")
+    Table(:columns="columns" :data="note.list")
 </template>
 <script>
 import { mapState } from 'vuex'
+import iview from 'iview'
+import { QUERY_CHANGE, LIST, EDIT, DELETE_NOTE } from 'store/note/keys'
+
 export default {
   data () {
     return {
@@ -22,41 +25,42 @@ export default {
           key: 'content'
         },
         {
-          title: '创建时间',
-          key: 'createTime'
-        },
-        {
           title: '公告类型',
           key: 'type'
         },
         {
           title: '紧急程度',
+          filters: [
+            { label: '紧急', value: 1 },
+            { label: '一般', value: 0 }
+          ],
+          filterRemote: value => this.$store.dispatch(QUERY_CHANGE, { key: 'urgency', value: value.join(',') }),
           render: (h, { row }) => {
-            const color = row.flag === 1 ? 'red' : 'blue'
-            const text = row.flag === 1 ? '紧急' : '一般'
+            const color = row.urgency === 1 ? 'red' : 'blue'
+            const text = row.urgency === 1 ? '紧急' : '一般'
             return <tag type="dot" color={color}>{ text }</tag>
           }
         },
         {
-          title: '所属单位',
-          align: 'center',
-          render: (h, { row }) => {
-            const user = row.user
-            return <span>{user.company}</span>
-          }
+          title: '创建时间',
+          key: 'createTime'
         },
         {
           title: '创建人',
           align: 'center',
           render: (h, { row }) => {
-            return <span>{ row.user.username }</span>
+            const { createUser } = row
+            return <span>{ createUser.nickname || createUser.username }</span>
           }
         },
         {
           title: '操作',
-          width: 80,
+          width: 140,
           render: (h, { row }) => {
-            return <i-button type="error" size="small">删除</i-button>
+            return <div>
+              <span style="margin-right:8px"><i-button size="small" type="primary" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
+              <span><i-button type="error" size="small" onClick={() => this.delete(row)}>删除</i-button></span>
+            </div>
           }
         }
       ]
@@ -67,8 +71,25 @@ export default {
       note: ({note}) => note.list
     })
   },
+  methods: {
+    edit (uuid) {
+      this.$store.dispatch(EDIT, uuid)
+    },
+    delete (row) {
+      iview.Modal.confirm({
+        title: '删除公告',
+        content: `<p>确认删除公告吗？</p>`,
+        onOk: () => {
+          this.$store.dispatch(DELETE_NOTE, row.uuid)
+          this.$store.dispatch(LIST)
+        },
+        onCancel: () => {
+        }
+      })
+    }
+  },
   created () {
-    this.$store.dispatch('note/list')
+    this.$store.dispatch(LIST)
   }
 }
 </script>

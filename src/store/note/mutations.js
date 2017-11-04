@@ -1,9 +1,8 @@
 import { LIST, QUERY_CHANGE, MODAL, EDIT, CREATE, FORM_CHANGE } from './keys'
 import _ from 'lodash'
 export default {
-  [LIST] (state, { list, page, size, total }) {
-    state.list = list
-    state.total = total
+  [LIST] (state, data = {}) {
+    state.list = data
   },
   [QUERY_CHANGE] (state, { key, value }) {
     state.query.page = 1
