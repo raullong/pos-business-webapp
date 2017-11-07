@@ -72,27 +72,30 @@ export default {
         {
           title: '签约人',
           render: (h, { row }) => {
+            const { signUser } = row
             return <div style="margin: 4px 0">
-              <div style="color: #9E9E9E">{row.signUserName || ''}</div>
-              <div>{row.signUserMobile || ''}</div>
+              <div style="color: #9E9E9E">{signUser.nickname || signUser.username || ''}</div>
+              <div>{signUser.mobile || ''}</div>
             </div>
           }
         },
         {
           title: '设备领用人',
           render: (h, { row }) => {
+            const { drawUser } = row
             return <div style="margin: 4px 0">
-              <div style="color: #9E9E9E">{row.drawUserName || ''}</div>
-              <div>{row.drawUserMobile || ''}</div>
+              <div style="color: #9E9E9E">{drawUser.nickname || drawUser.username || ''}</div>
+              <div>{drawUser.mobile || ''}</div>
             </div>
           }
         },
         {
           title: '装机人',
           render: (h, { row }) => {
+            const { installUser } = row
             return <div style="margin: 4px 0">
-              <div style="color: #9E9E9E">{row.installUserName || ''}</div>
-              <div>{row.installUserMobile || ''}</div>
+              <div style="color: #9E9E9E">{installUser.nickname || installUser.username || ''}</div>
+              <div>{installUser.mobile || ''}</div>
             </div>
           }
         },

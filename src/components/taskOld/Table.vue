@@ -71,9 +71,10 @@ export default {
         {
           title: '维护负责人',
           render: (h, { row }) => {
+            const { serverUser } = row
             return <div style="margin: 4px 0">
-              <div style="color: #9E9E9E">{row.serverName || ''}</div>
-              <div>{row.serverMobile || ''}</div>
+              <div style="color: #9E9E9E">{serverUser.nickname || serverUser.username || ''}</div>
+              <div>{serverUser.mobile || ''}</div>
             </div>
           }
         },
@@ -83,7 +84,7 @@ export default {
             const user = row.createUser
             if (user) {
               return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{user.username || ''}</div>
+                <div style="color: #9E9E9E">{user.nickname || user.username || ''}</div>
                 <div>{user.mobile || ''}</div>
               </div>
             } else return ''

@@ -16,8 +16,8 @@
       Input(:value="changedMerchant.machineCode" readonly)
     Form-item(label="发布时间")
       Date-picker(
-        v-model="form.issuseTime",
-        @on-change="e => change('issuseTime', e)",
+        v-model="form.issueTime",
+        @on-change="e => change('issueTime', e)",
         type="datetime",
         placement="top",
         placeholder="请选择发布时间"
