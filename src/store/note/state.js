@@ -4,7 +4,6 @@ const form = {
   uuid: '',
   title: '',
   content: '',
-  type: '',
   urgency: 0
 }
 export default {

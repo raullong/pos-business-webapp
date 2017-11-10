@@ -7,7 +7,7 @@ const form = {
   nickname: '',
   password: '',
   status: 1,
-  type: 1,
+  type: [],
   superStar: 0,
   position: {},
   client: ''

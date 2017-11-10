@@ -3,8 +3,6 @@
     Spin(v-if="loading", fix)
     Form-item(label="公告标题")
       Input(:value="form.title", @on-change="e => change('title', e.target.value)")
-    Form-item(label="公告类型")
-      Input(:value="form.type", @on-change="e => change('type', e.target.value)")
     Form-item(label="是否紧急")
       Radio-group(:value="form.urgency", @on-change="e => change('urgency', e)")
         Radio(:label="0") 不紧急

@@ -72,10 +72,12 @@ export default {
           title: '维护负责人',
           render: (h, { row }) => {
             const { serverUser } = row
-            return <div style="margin: 4px 0">
-              <div style="color: #9E9E9E">{serverUser.nickname || serverUser.username || ''}</div>
-              <div>{serverUser.mobile || ''}</div>
-            </div>
+            if (serverUser) {
+              return <div style="margin: 4px 0">
+                <div style="color: #9E9E9E">{serverUser.nickname || serverUser.username || ''}</div>
+                <div>{serverUser.mobile || ''}</div>
+              </div>
+            } else return ''
           }
         },
         {

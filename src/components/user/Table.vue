@@ -24,6 +24,7 @@ export default {
         {
           title: '明星员工',
           key: 'superStar',
+          width: 120,
           align: 'center',
           filters: [
             { label: '是', value: 1 },
@@ -64,11 +65,10 @@ export default {
         },
         {
           title: '用户类型',
-          width: 120,
           filters: [],
           filterRemote: value => this.$store.dispatch(QUERY_CHANGE, { key: 'type', value: value.join(',') }),
           render: (h, { row }) => {
-            return <span>{ row.userType.value }</span>
+            return <span>{ row.userType }</span>
           }
         },
         {
@@ -86,7 +86,7 @@ export default {
           }
         }
       ]
-      columns[5].filters = this.filterUserType
+      columns[6].filters = this.filterUserType
       return columns
     },
     filterUserType () {

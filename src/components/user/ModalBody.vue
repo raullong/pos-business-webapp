@@ -1,18 +1,18 @@
 <template lang="pug">
   Form(:label-width="72")
     Spin(v-if="loading", fix)
+    Form-item(label="登录用户名")
+      Input(:value="form.username", @on-change="e => change('username', e.target.value)")
     Form-item(label="用户电话")
       Input(:value="form.mobile", @on-change="e => change('mobile', e.target.value)")
-    Form-item(label="用户姓名")
-      Input(:value="form.username", @on-change="e => change('username', e.target.value)")
     Form-item(label="用户昵称")
       Input(:value="form.nickname", @on-change="e => change('nickname', e.target.value)")
     Form-item(label="密码")
       Input(type="password", :value="form.password", @on-change="e => change('password', e.target.value)", :disabled="isEdit")
     Form-item(label="用户类型")
       Select(
-        :model="form.type",
-        filterable,
+        v-model="form.type",
+        multiple,
         @on-change="value => change('type', value)",
         clearable)
         Option(v-for="item in userTypes", :value="item.key", :key="item.id") {{item.value}}

@@ -27,6 +27,7 @@ export default {
     state.loading.create = status === 0
   },
   [FORM_CHANGE] (state, { key, value }) {
+    console.log('FORM_CHANGE', value)
     state.form[key] = value
   },
   [USER_REMOTE_QUERY] (state, data = []) {

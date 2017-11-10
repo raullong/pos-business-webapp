@@ -25,10 +25,6 @@ export default {
           key: 'content'
         },
         {
-          title: '公告类型',
-          key: 'type'
-        },
-        {
           title: '紧急程度',
           filters: [
             { label: '紧急', value: 1 },
