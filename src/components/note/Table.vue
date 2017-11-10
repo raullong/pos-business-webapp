@@ -17,15 +17,8 @@ export default {
           width: 80
         },
         {
-          title: '标题',
-          key: 'title'
-        },
-        {
-          title: '内容',
-          key: 'content'
-        },
-        {
           title: '紧急程度',
+          width: 140,
           filters: [
             { label: '紧急', value: 1 },
             { label: '一般', value: 0 }
@@ -38,8 +31,12 @@ export default {
           }
         },
         {
-          title: '创建时间',
-          key: 'createTime'
+          title: '标题',
+          key: 'title'
+        },
+        {
+          title: '内容',
+          key: 'content'
         },
         {
           title: '创建人',
@@ -48,6 +45,11 @@ export default {
             const { createUser } = row
             return <span>{ createUser.nickname || createUser.username }</span>
           }
+        },
+        {
+          title: '创建时间',
+          key: 'createTime',
+          width: 150
         },
         {
           title: '操作',

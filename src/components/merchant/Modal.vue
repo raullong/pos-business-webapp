@@ -17,8 +17,8 @@
     components: { AppModalBody, AppModalFooter },
     computed: {
       ...mapState({
-        show: ({ company }) => company.modal.form,
-        isEdit: ({ company }) => company.isEdit
+        show: ({ merchant }) => merchant.modal.form,
+        isEdit: ({ merchant }) => merchant.isEdit
       }),
       title () {
         return this.isEdit ? '编辑商户' : '创建商户'

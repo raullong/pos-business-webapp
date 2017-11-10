@@ -1,4 +1,4 @@
-import { MAP_LIST, COMPANY_LIST } from 'store/map/keys'
+import { MAP_LIST, MERCHANT_LIST } from 'store/map/keys'
 import * as api from 'api/map'
 import iview from 'iview'
 
@@ -10,9 +10,9 @@ export default {
       iview.Message.error(message)
     }
   },
-  async [COMPANY_LIST] ({ state, commit }) {
+  async [MERCHANT_LIST] ({ state, commit }) {
     try {
-      commit(COMPANY_LIST, await api.companyList())
+      commit(MERCHANT_LIST, await api.merchantList())
     } catch ({ message }) {
       iview.Message.error(message)
     }

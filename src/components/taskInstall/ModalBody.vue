@@ -75,7 +75,7 @@
 <script>
   import { mapState } from 'vuex'
   import { FORM_CHANGE } from 'store/taskInstall/keys'
-  import { REMOTE_QUERY } from 'store/company/keys'
+  import { REMOTE_QUERY } from 'store/merchant/keys'
   import { USER_REMOTE_QUERY } from 'store/user/keys'
   import _ from 'lodash'
 
@@ -90,7 +90,7 @@
         form: ({ taskInstall }) => taskInstall.form,
         isEdit: ({ taskInstall }) => taskInstall.isEdit,
         loading: ({ taskInstall }) => taskInstall.loading.edit,
-        remoteQueryResult: ({ company }) => company.remoteQueryResult,
+        remoteQueryResult: ({ merchant }) => merchant.remoteQueryResult,
         remoteQueryUserResult: ({ user }) => user.remoteQueryUserResult
       })
     },

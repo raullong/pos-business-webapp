@@ -4,5 +4,5 @@ export default {
   listDisplay: false,
   taskDisplay: false,
   taskBtnDisplay: false,
-  companyList: []
+  merchantList: []
 }

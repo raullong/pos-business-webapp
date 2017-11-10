@@ -4,9 +4,9 @@
 <script>
 import { mapState } from 'vuex'
 import AppMarketInfoPerson from './MarketInfoPerson'
-import AppMarketInfoCompany from './MarketInfoCompany'
+import AppMarketInfoMerchant from './MarketInfoMerchant'
 export default {
-  components: { AppMarketInfoPerson, AppMarketInfoCompany },
+  components: { AppMarketInfoPerson, AppMarketInfoMerchant },
   computed: {
     ...mapState({
       infoData: ({map}) => map.infoData
@@ -15,8 +15,8 @@ export default {
       if (this.infoData.type === 'person') {
         return 'AppMarketInfoPerson'
       }
-      if (this.infoData.type === 'company') {
-        return 'AppMarketInfoCompany'
+      if (this.infoData.type === 'merchant') {
+        return 'AppMarketInfoMerchant'
       }
     }
   }

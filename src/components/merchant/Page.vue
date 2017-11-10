@@ -1,5 +1,5 @@
 <template lang="pug">
-  .company-page
+  .merchant-page
     Page(
       show-sizer,
       show-total,
@@ -12,11 +12,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { QUERY_CHANGE } from 'store/company/keys'
+import { QUERY_CHANGE } from 'store/merchant/keys'
 export default {
   computed: {
     ...mapState({
-      list: ({company}) => company.list
+      list: ({merchant}) => merchant.list
     })
   },
   methods: {

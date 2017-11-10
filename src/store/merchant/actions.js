@@ -2,7 +2,7 @@ import { LIST, CREATE, MODAL, QUERY_CHANGE, EDIT, SAVE, DELETE_MERCHANT, REMOTE_
 
 import iview from 'iview'
 
-import * as api from 'api/company'
+import * as api from 'api/merchant'
 
 export default {
   async [LIST] ({ state, commit }) {

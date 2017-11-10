@@ -32,7 +32,7 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { FORM_CHANGE } from 'store/company/keys'
+  import { FORM_CHANGE } from 'store/merchant/keys'
   import _ from 'lodash'
 
   const loadScript = (key = '4d014a4800e8f9fc8ef524a94db2588a') => new Promise((resolve, reject) => {
@@ -76,9 +76,9 @@
     },
     computed: {
       ...mapState({
-        form: ({ company }) => company.form,
-        isEdit: ({ company }) => company.isEdit,
-        loading: ({ company }) => company.loading.edit
+        form: ({ merchant }) => merchant.form,
+        isEdit: ({ merchant }) => merchant.isEdit,
+        loading: ({ merchant }) => merchant.loading.edit
       }),
       queryItems () {
         return _.chain(this.queryResult).map(item => item.name).value()

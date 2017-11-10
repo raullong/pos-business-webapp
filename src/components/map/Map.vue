@@ -6,7 +6,7 @@
 <script>
 import { mapState } from 'vuex'
 import _ from 'lodash'
-import { MAP_LIST, COMPANY_LIST } from 'store/map/keys'
+import { MAP_LIST, MERCHANT_LIST } from 'store/map/keys'
 import AppMarketInfo from './MarketInfo'
 let AMap = null
 
@@ -25,13 +25,13 @@ export default {
       map: null,
       infoData: {},
       personMarkers: [],
-      companyMarkers: []
+      merchantMarkers: []
     }
   },
   computed: {
     ...mapState({
       personList: ({map}) => map.list,
-      companyList: ({map}) => map.companyList
+      merchantList: ({map}) => map.merchantList
     })
   },
   methods: {
@@ -55,15 +55,15 @@ export default {
       })
     },
     // 渲染商户 marker
-    renderCompanyMarker () {
+    renderMerchantMarker () {
       // 从地图上移除 marker
-      _.forEach(this.companyMarkers, marker => {
+      _.forEach(this.merchantMarkers, marker => {
         marker.setMap(null)
       })
 
-      this.companyMarkers = _.map(this.companyList, (company) => {
+      this.merchantMarkers = _.map(this.merchantList, (merchant) => {
         const icon = '/static/images/house.png'
-        return this.createMarker({ position: company.locationInfo, extData: { type: 'company', data: company }, icon })
+        return this.createMarker({ position: merchant.locationInfo, extData: { type: 'merchant', data: merchant }, icon })
       })
     },
     createMarker ({ position = {}, extData, icon }) {
@@ -99,15 +99,15 @@ export default {
       this.renderPersonMarker()
       setTimeout(() => this.fetchPerson(), 2000)
     },
-    async fetchCompany () {
-      await this.$store.dispatch(COMPANY_LIST)
-      this.renderCompanyMarker()
+    async fetchMerchant () {
+      await this.$store.dispatch(MERCHANT_LIST)
+      this.renderMerchantMarker()
     }
   },
   async mounted () {
     await this.init()
     this.fetchPerson()
-    this.fetchCompany()
+    this.fetchMerchant()
   }
 }
 </script>

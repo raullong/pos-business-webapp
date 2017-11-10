@@ -10,4 +10,4 @@ export const TASK_DISPLAY = prefix + 'task/display'
 export const TASK_LIST_DISPLAY = prefix + 'task/list/display'
 
 // 商户信息显示
-export const COMPANY_LIST = prefix + 'company/list'
+export const MERCHANT_LIST = prefix + 'merchant/list'

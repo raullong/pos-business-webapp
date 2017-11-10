@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { QUERY_CHANGE, MODAL } from 'store/company/keys'
+import { QUERY_CHANGE, MODAL } from 'store/merchant/keys'
 export default {
   data () {
     return {

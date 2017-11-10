@@ -4,12 +4,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import { EDIT, LIST } from 'store/company/keys'
+import { EDIT, LIST } from 'store/merchant/keys'
 
 export default {
   computed: {
     ...mapState({
-      list: ({ company }) => company.list
+      list: ({ merchant }) => merchant.list
     }),
     columns () {
       const columns = [
@@ -51,7 +51,7 @@ export default {
             { label: '正常', value: 1 },
             { label: '注销', value: 0 }
           ],
-          filterRemote: value => this.$store.dispatch('company/query/change', { key: 'status', value: value.join(',') }),
+          filterRemote: value => this.$store.dispatch('merchant/query/change', { key: 'status', value: value.join(',') }),
           render: (h, { row }) => {
             const color = row.status === 1 ? 'green' : 'red'
             const text = row.status === 1 ? '正常' : '注销'

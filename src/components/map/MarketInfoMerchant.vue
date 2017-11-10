@@ -2,7 +2,7 @@
   .content
     .title
       span 商户信息 
-    .market-info-person
+    .market-info-merchant
       .name(style="font-size:15px") 商户名称： {{ info.name }}
       .mobile(style="font-size:15px;margin-top:6px") 联系电话： {{ info.linkerMobile }}
       .username(style="font-size:15px;margin-top:6px") 联系人： {{ info.linkerName }}
@@ -20,5 +20,5 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-@import './style/companyInfo'
+@import './style/merchantInfo'
 </style>

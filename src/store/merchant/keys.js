@@ -1,4 +1,4 @@
-const prefix = 'company/'
+const prefix = 'merchant/'
 
 export const CREATE = prefix + 'create'
 

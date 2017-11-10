@@ -5,12 +5,12 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { MODAL, CREATE, SAVE } from 'store/company/keys'
+import { MODAL, CREATE, SAVE } from 'store/merchant/keys'
 export default {
   computed: {
     ...mapState({
-      loading: ({ company }) => company.loading.create,
-      isEdit: ({ company }) => company.isEdit
+      loading: ({ merchant }) => merchant.loading.create,
+      isEdit: ({ merchant }) => merchant.isEdit
     }),
     sureName () {
       return this.isEdit ? '修改' : '创建'

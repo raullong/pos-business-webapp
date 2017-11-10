@@ -3,7 +3,7 @@
   AppHeader
   .app__layout
     Menu(@on-select="menuChange", :active-name="$router.name", :theme="theme" :width="this.menuWidth")
-      Menu-item(name="company")
+      Menu-item(name="merchant")
         Icon(type="ios-home-outline")
         | 商户管理
       Submenu(name="task")

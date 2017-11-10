@@ -12,7 +12,7 @@ export default new Vuex.Store({
     auth: require('./auth').default,
     note: require('./note').default,
     taskInstall: require('./taskInstall').default,
-    company: require('./company').default,
+    merchant: require('./merchant').default,
     taskStick: require('./taskStick').default,
     sign: require('./sign').default
   }

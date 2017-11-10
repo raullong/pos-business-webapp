@@ -7,7 +7,7 @@ const routers = new Router({
   mode: 'history',
   base: '/app',
   routes: [
-    { path: '/', name: 'company', component: resolve => require(['@/components/company/View'], resolve) },
+    { path: '/', name: 'merchant', component: resolve => require(['@/components/merchant/View'], resolve) },
     { path: '/user', name: 'user', component: resolve => require(['@/components/user/View'], resolve) },
     { path: '/map', name: 'map', component: resolve => require(['@/components/map/View'], resolve) },
     { path: '/taskInstall', name: 'taskInstall', component: resolve => require(['@/components/taskInstall/View'], resolve) },
