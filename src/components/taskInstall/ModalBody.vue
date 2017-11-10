@@ -31,7 +31,7 @@
         :loading="loading",
         placeholder="请输入签约人电话",
         @on-change="e => change('signUserMobile', e)")
-          Option(v-for="user in remoteQueryUserResult", :value="user.mobile", :key="user.uuid") {{user.mobile}} - {{user.username}}
+          Option(v-for="user in remoteQueryUserResult", :value="user.mobile", :key="user.uuid") {{user.mobile}} - {{user.username}} - {{user.nickname}}
     Form-item(label="设备领用人")
       Select(
         v-model="form.drawUserMobile",

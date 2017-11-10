@@ -19,7 +19,7 @@ export default {
         {
           title: '序号',
           type: 'index',
-          width: 60
+          width: 80
         },
         {
           title: '明星员工',
@@ -37,7 +37,7 @@ export default {
           }
         },
         {
-          title: '用户姓名',
+          title: '用户名',
           key: 'username'
         },
         {

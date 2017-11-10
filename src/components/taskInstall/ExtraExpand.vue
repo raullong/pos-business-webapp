@@ -2,7 +2,23 @@
   .extra
     .content
       Row(class="expand-row")
-        Col(span="24")
+        Col(span="6")
+          span(class="expand-key") 签约人: 
+          span(class="expand-value") {{ anysaleUser(row.signUser) }}
+        Col(span="6")
+          span(class="expand-key") 设备领用人: 
+          span(class="expand-value") {{ anysaleUser(row.drawUser) }}
+        Col(span="6")
+          span(class="expand-key") 安装人: 
+          span(class="expand-value") {{ anysaleUser(row.installUser) }}
+        Col(span="6")
+          span(class="expand-key") 创建人: 
+          span(class="expand-value") {{ anysaleUser(row.createUser) }}
+      Row(class="expand-row")
+        Col(span="6")
+          span(class="expand-key") 商户编码:
+          span(class="expand-value") {{ row.merchant.code }}
+        Col(span="6")
           span(class="expand-key") 商户联系人：
           span(class="expand-value") {{ row.merchant.linkerName }} - {{ row.merchant.linkerMobile }}
       Row(class="expand-row")
@@ -18,6 +34,11 @@
 export default {
   props: {
     row: Object
+  },
+  methods: {
+    anysaleUser (user) {
+      return user ? ((user.nickname ? user.nickname : user.username) + ' - ' + user.mobile) : ''
+    }
   }
 }
 </script>
@@ -27,5 +48,5 @@ export default {
     margin-bottom: 10px
     .expand-key
       font-weight: bold
-      font-size: 13px
+      margin-right: 5px
 </style>

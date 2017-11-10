@@ -35,19 +35,19 @@
         :loading="loading",
         placeholder="请维护人电话",
         @on-change="e => change('serverMobile', e)")
-          Option(v-for="user in remoteQueryUserResult", :value="user.mobile", :key="user.uuid") {{user.mobile}} - {{user.username}}
+          Option(v-for="user in remoteQueryUserResult", :value="user.mobile", :key="user.uuid") {{user.mobile}} - {{user.username}} - {{ user.nickname }}
     Form-item(label="维护时间")
       Date-picker(
-        v-model="form.taskTime",
-        @on-change="e => change('taskTime', e)",
+        v-model="form.serverTime",
+        @on-change="e => change('serverTime', e)",
         type="datetime",
         placement="top",
         placeholder="请选择维护时间"
         format="yyyy-MM-dd HH:mm",
         :clearable="false",
         :editable="false")
-    Form-item(label="问题描述")
-      Input(:value="form.question", @on-change="value => change('question', value.target.value)" :rows="5" type="textarea", placeholder="请输入问题描述")
+    Form-item(label="备注")
+      Input(:value="form.remark", @on-change="value => change('remark', value.target.value)" :rows="5" type="textarea", placeholder="请输入问题描述")
     Form-item(label="状态")
       RadioGroup(v-model="form.status")
         Radio(label="0") 未派发

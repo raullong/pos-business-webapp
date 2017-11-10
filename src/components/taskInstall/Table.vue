@@ -34,20 +34,13 @@ export default {
         {
           title: '序号',
           type: 'index',
-          width: '60'
+          width: '80'
         },
         {
           title: '商户名称',
           render: (h, { row }) => {
             const merchant = row.merchant
             return merchant ? <span>{merchant.name}</span> : ''
-          }
-        },
-        {
-          title: '商户编码',
-          render: (h, { row }) => {
-            const merchant = row.merchant
-            return merchant ? <span>{merchant.code}</span> : ''
           }
         },
         {
@@ -70,49 +63,18 @@ export default {
           key: 'moneyType'
         },
         {
-          title: '签约人',
-          render: (h, { row }) => {
-            const { signUser } = row
-            if (signUser) {
-              return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{signUser.nickname || signUser.username || ''}</div>
-                <div>{signUser.mobile || ''}</div>
-              </div>
-            } else return ''
-          }
-        },
-        {
-          title: '设备领用人',
-          render: (h, { row }) => {
-            const { drawUser } = row
-            if (drawUser) {
-              return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{drawUser.nickname || drawUser.username || ''}</div>
-                <div>{drawUser.mobile || ''}</div>
-              </div>
-            } else return ''
-          }
-        },
-        {
-          title: '装机人',
-          render: (h, { row }) => {
-            const { installUser } = row
-            if (installUser) {
-              return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{installUser.nickname || installUser.username || ''}</div>
-                <div>{installUser.mobile || ''}</div>
-              </div>
-            } else return ''
-          }
-        },
-        {
           title: '装机时间',
           width: '135',
           key: 'installTime'
         },
         {
+          title: '创建时间',
+          width: 150,
+          key: 'createTime'
+        },
+        {
           title: '工单状态',
-          width: '130',
+          width: '140',
           filters: [
             { label: '未派发', value: 0 },
             { label: '已派发', value: 1 },
@@ -141,7 +103,7 @@ export default {
         },
         {
           title: '操作',
-          width: 150,
+          width: 130,
           key: 'action',
           render: (h, { row }) => {
             return <div>

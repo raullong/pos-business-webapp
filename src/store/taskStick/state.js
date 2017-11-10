@@ -8,8 +8,8 @@ const form = {
   issueTime: '',
   type: '',
   serverMobile: '',
-  taskTime: '',
-  question: '',
+  serverTime: '',
+  remark: '',
   status: 0
 }
 export default {
