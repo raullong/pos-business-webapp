@@ -58,7 +58,7 @@
 </template>
 <script>
   import { mapState } from 'vuex'
-  import { FORM_CHANGE } from 'store/taskOld/keys'
+  import { FORM_CHANGE } from 'store/taskStick/keys'
   import { REMOTE_QUERY } from 'store/company/keys'
   import { USER_REMOTE_QUERY } from 'store/user/keys'
   import _ from 'lodash'
@@ -71,9 +71,9 @@
     },
     computed: {
       ...mapState({
-        form: ({ taskOld }) => taskOld.form,
-        isEdit: ({ taskOld }) => taskOld.isEdit,
-        loading: ({ taskOld }) => taskOld.loading.edit,
+        form: ({ taskStick }) => taskStick.form,
+        isEdit: ({ taskStick }) => taskStick.isEdit,
+        loading: ({ taskStick }) => taskStick.loading.edit,
         remoteQueryResult: ({ company }) => company.remoteQueryResult,
         remoteQueryUserResult: ({ user }) => user.remoteQueryUserResult
       })

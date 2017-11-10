@@ -12,11 +12,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { QUERY_CHANGE } from 'store/taskOld/keys'
+import { QUERY_CHANGE } from 'store/taskStick/keys'
 export default {
   computed: {
     ...mapState({
-      list: ({taskOld}) => taskOld.list
+      list: ({taskStick}) => taskStick.list
     })
   },
   methods: {

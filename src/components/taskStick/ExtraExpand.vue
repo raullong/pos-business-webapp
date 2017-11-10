@@ -10,8 +10,8 @@
           span(class="expand-value") {{ row.merchant.linkerName }} - {{ row.merchant.linkerMobile }}
       Row(class="expand-row")
         Col(span="24")
-          span(class="expand-key") 问题描述: 
-          span(class="expand-value") {{ row.question || '' }}
+          span(class="expand-key") 备注: 
+          span(class="expand-value") {{ row.remark || '' }}
 </template>
 <script>
 export default {

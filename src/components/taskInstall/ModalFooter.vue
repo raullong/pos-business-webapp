@@ -6,13 +6,13 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { MODAL, CREATE, SAVE } from 'store/taskOld/keys'
+  import { MODAL, CREATE, SAVE } from 'store/taskInstall/keys'
 
   export default {
     computed: {
       ...mapState({
-        loading: ({ taskOld }) => taskOld.loading.create,
-        isEdit: ({ taskOld }) => taskOld.isEdit
+        loading: ({ taskInstall }) => taskInstall.loading.create,
+        isEdit: ({ taskInstall }) => taskInstall.isEdit
       }),
       sureName () {
         return this.isEdit ? '修改' : '创建'

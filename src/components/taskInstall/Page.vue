@@ -12,11 +12,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { QUERY_CHANGE } from 'store/dispatch/keys'
+import { QUERY_CHANGE } from 'store/taskInstall/keys'
 export default {
   computed: {
     ...mapState({
-      list: ({dispatch}) => dispatch.list
+      list: ({taskInstall}) => taskInstall.list
     })
   },
   methods: {

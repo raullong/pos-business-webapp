@@ -1,6 +1,6 @@
 import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, DELETE_DISPATCH, SAVE } from './keys'
 
-import * as api from 'api/dispatch'
+import * as api from 'api/taskInstall'
 
 import iview from 'iview'
 

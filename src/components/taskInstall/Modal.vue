@@ -17,11 +17,11 @@
     components: { AppModalBody, AppModalFooter },
     computed: {
       ...mapState({
-        show: ({ taskOld }) => taskOld.modal.form,
-        isEdit: ({ taskOld }) => taskOld.isEdit
+        show: ({ taskInstall }) => taskInstall.modal.form,
+        isEdit: ({ taskInstall }) => taskInstall.isEdit
       }),
       title () {
-        return this.isEdit ? '编辑维护工单' : '创建维护工单'
+        return this.isEdit ? '编辑新装工单' : '创建新装工单'
       },
       style () {
         return {

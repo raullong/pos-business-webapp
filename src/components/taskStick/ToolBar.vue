@@ -14,7 +14,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { QUERY_CHANGE, MODAL, LIST } from 'store/taskOld/keys'
+import { QUERY_CHANGE, MODAL, LIST } from 'store/taskStick/keys'
 
 export default {
   data () {
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState({
-      query: ({taskOld}) => taskOld.query
+      query: ({taskStick}) => taskStick.query
     })
   },
   methods: {

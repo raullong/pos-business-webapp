@@ -1,25 +1,21 @@
 <template lang="pug">
-  Table(:columns="columns" :data="list.list" stripe highlight-row)
+  Table(:columns="columns" :data="list.list")
 </template>
+
 <script>
 import { mapState } from 'vuex'
 import iview from 'iview'
-import { EDIT, LIST, QUERY_CHANGE, DELETE_DISPATCH } from 'store/dispatch/keys'
+import { QUERY_CHANGE, EDIT, LIST, DELETE_TASK } from 'store/taskStick/keys'
 import extraExpand from './ExtraExpand'
 
 export default {
   components: { extraExpand },
   computed: {
     ...mapState({
-      list: ({dispatch}) => dispatch.list
-    })
-  },
-  created () {
-    this.$store.dispatch(LIST)
-  },
-  data () {
-    return {
-      columns: [
+      list: ({taskStick}) => taskStick.list
+    }),
+    columns () {
+      const columns = [
         {
           type: 'expand',
           width: 50,
@@ -34,85 +30,72 @@ export default {
         {
           title: '序号',
           type: 'index',
-          width: '60'
+          width: 80
         },
         {
           title: '商户名称',
+          width: 150,
           render: (h, { row }) => {
             const merchant = row.merchant
-            return merchant ? <span>{merchant.name}</span> : ''
+            return <span>{merchant.name}</span>
           }
         },
         {
           title: '商户编码',
           render: (h, { row }) => {
             const merchant = row.merchant
-            return merchant ? <span>{merchant.code}</span> : ''
+            return <span>{merchant.code}</span>
           }
         },
         {
           title: '终端编码',
           render: (h, { row }) => {
             const merchant = row.merchant
-            return merchant ? <span>{merchant.machineCode}</span> : ''
+            return <span>{merchant.machineCode}</span>
           }
         },
         {
-          title: '类型',
+          title: '联系人信息',
+          render: (h, { row }) => {
+            const merchant = row.merchant
+            return <div style="margin: 4px 0">
+              <div style="color: #9E9E9E">{merchant.linkerName || ''}</div>
+              <div>{merchant.linkerMobile || ''}</div>
+            </div>
+          }
+        },
+        {
+          title: '维护类型',
           key: 'type'
         },
         {
-          title: '押金(元)',
-          key: 'money'
-        },
-        {
-          title: '押金类型',
-          key: 'moneyType'
-        },
-        {
-          title: '签约人',
+          title: '维护负责人',
           render: (h, { row }) => {
-            const { signUser } = row
-            if (signUser) {
+            const { serverUser } = row
+            if (serverUser) {
               return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{signUser.nickname || signUser.username || ''}</div>
-                <div>{signUser.mobile || ''}</div>
+                <div style="color: #9E9E9E">{serverUser.nickname || serverUser.username || ''}</div>
+                <div>{serverUser.mobile || ''}</div>
               </div>
             } else return ''
           }
         },
         {
-          title: '设备领用人',
+          title: '创建人',
           render: (h, { row }) => {
-            const { drawUser } = row
-            if (drawUser) {
+            const user = row.createUser
+            if (user) {
               return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{drawUser.nickname || drawUser.username || ''}</div>
-                <div>{drawUser.mobile || ''}</div>
+                <div style="color: #9E9E9E">{user.nickname || user.username || ''}</div>
+                <div>{user.mobile || ''}</div>
               </div>
             } else return ''
           }
         },
         {
-          title: '装机人',
-          render: (h, { row }) => {
-            const { installUser } = row
-            if (installUser) {
-              return <div style="margin: 4px 0">
-                <div style="color: #9E9E9E">{installUser.nickname || installUser.username || ''}</div>
-                <div>{installUser.mobile || ''}</div>
-              </div>
-            } else return ''
-          }
-        },
-        {
-          title: '装机时间',
-          width: '135',
-          key: 'installTime'
-        },
-        {
-          title: '工单状态',
-          width: '130',
+          title: '完成情况',
+          align: 'center',
+          width: 150,
           filters: [
             { label: '未派发', value: 0 },
             { label: '已派发', value: 1 },
@@ -141,16 +124,16 @@ export default {
         },
         {
           title: '操作',
-          width: 150,
-          key: 'action',
+          width: 160,
           render: (h, { row }) => {
             return <div>
-              <span style="margin-right:8px"><i-button type="primary" size="small" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
+              <span style="margin-right:8px"><i-button size="small" type="primary" onClick={() => this.edit(row.uuid)}>编辑</i-button></span>
               <span><i-button type="error" size="small" onClick={() => this.delete(row)}>删除</i-button></span>
             </div>
           }
         }
       ]
+      return columns
     }
   },
   methods: {
@@ -162,18 +145,17 @@ export default {
         title: '删除工单',
         content: `<p>确认删除工单吗？</p>`,
         onOk: () => {
-          this.$store.dispatch(DELETE_DISPATCH, row.uuid)
+          this.$store.dispatch(DELETE_TASK, row.uuid)
           this.$store.dispatch(LIST)
         },
         onCancel: () => {
         }
       })
     }
+  },
+  created () {
+    this.$store.dispatch(LIST)
   }
 }
 </script>
 
-<style lang="stylus" scoped module>
-  .red
-    color red
-</style>

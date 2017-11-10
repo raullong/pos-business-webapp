@@ -10,10 +10,10 @@
         template(slot="title")
           Icon(type="ios-paper")
           | 任务管理
-        Menu-item(name="task-new")
+        Menu-item(name="taskInstall")
           Icon(type="checkmark")
           | 新装工单
-        Menu-item(name="task-old")
+        Menu-item(name="taskStick")
           Icon(type="checkmark-circled")
           | 维护工单
       Menu-item(name="user")

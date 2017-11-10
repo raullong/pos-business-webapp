@@ -11,9 +11,9 @@ export default new Vuex.Store({
     user: require('./user').default,
     auth: require('./auth').default,
     note: require('./note').default,
-    dispatch: require('./dispatch').default,
+    taskInstall: require('./taskInstall').default,
     company: require('./company').default,
-    taskOld: require('./taskOld').default,
+    taskStick: require('./taskStick').default,
     sign: require('./sign').default
   }
 })

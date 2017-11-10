@@ -1,6 +1,6 @@
 import { LIST, QUERY_CHANGE, CREATE, MODAL, EDIT, SAVE, DELETE_TASK } from './keys'
 
-import * as api from 'api/taskOld'
+import * as api from 'api/taskStick'
 
 import iview from 'iview'
 
