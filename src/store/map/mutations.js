@@ -1,8 +1,8 @@
-import { MAP_LIST, INFO_DATA, MERCHANT_LIST } from './keys'
+import { USER_LIST, INFO_DATA, MERCHANT_LIST } from './keys'
 
 export default {
-  [MAP_LIST] (state, data) {
-    state.list = data
+  [USER_LIST] (state, data) {
+    state.userList = data
   },
   [INFO_DATA] (state, info) {
     state.infoData = info

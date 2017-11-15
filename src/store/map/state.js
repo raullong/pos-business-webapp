@@ -1,5 +1,5 @@
 export default {
-  list: [],
+  userList: [],
   infoData: {},
   listDisplay: false,
   taskDisplay: false,

@@ -14,6 +14,8 @@ export default {
   },
   async [CREATE] ({ state, commit, dispatch }) {
     const form = { ...state.form }
+
+    console.log('form', form)
     try {
       commit(CREATE, { status: 0 })
       if (!form.address) throw new Error('商户地址不能为空')

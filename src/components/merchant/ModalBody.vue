@@ -91,7 +91,8 @@
           const { district, name, location } = item
           const { lat, lng } = location || {}
           let address = (district || '') + (name || '')
-          let locationInfo = { lat: lat, lng: lng, address: address }
+          let coordinates = [lng, lat]
+          let locationInfo = { coordinates: coordinates, type: 'Point' }
           this.queryResult = []
 
           this.$store.commit(FORM_CHANGE, { key: 'address', value: address })

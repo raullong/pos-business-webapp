@@ -6,7 +6,7 @@
 <script>
 import { mapState } from 'vuex'
 import _ from 'lodash'
-import { MAP_LIST, MERCHANT_LIST } from 'store/map/keys'
+import { USER_LIST, MERCHANT_LIST } from 'store/map/keys'
 import AppMarketInfo from './MarketInfo'
 let AMap = null
 
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     ...mapState({
-      personList: ({map}) => map.list,
+      personList: ({map}) => map.userList,
       merchantList: ({map}) => map.merchantList
     })
   },
@@ -51,7 +51,8 @@ export default {
 
       this.personMarkers = _.map(this.personList, (arg) => {
         const icon = '/static/images/map_point.png'
-        return this.createMarker({ position: arg.position, extData: { type: 'person', data: arg }, icon })
+        let { coordinates } = arg.position
+        return this.createMarker({ position: coordinates, extData: { type: 'person', data: arg }, icon })
       })
     },
     // 渲染商户 marker
@@ -63,14 +64,14 @@ export default {
 
       this.merchantMarkers = _.map(this.merchantList, (merchant) => {
         const icon = '/static/images/house.png'
-        return this.createMarker({ position: merchant.locationInfo, extData: { type: 'merchant', data: merchant }, icon })
+        let { coordinates } = merchant.locationInfo
+        return this.createMarker({ position: coordinates, extData: { type: 'merchant', data: merchant }, icon })
       })
     },
-    createMarker ({ position = {}, extData, icon }) {
-      const { lng, lat } = position
+    createMarker ({ position = [0, 0], extData, icon }) {
       const marker = new AMap.Marker({
         map: this.map,
-        position: [lng || 0, lat || 0],
+        position: position,
         icon: new AMap.Icon({ image: icon }),
         extData
       })
@@ -95,9 +96,9 @@ export default {
     },
     // 异步调用防止阻塞
     async fetchPerson () {
-      await this.$store.dispatch(MAP_LIST)
+      await this.$store.dispatch(USER_LIST)
       this.renderPersonMarker()
-      setTimeout(() => this.fetchPerson(), 2000)
+      setTimeout(() => this.fetchPerson(), 5000)
     },
     async fetchMerchant () {
       await this.$store.dispatch(MERCHANT_LIST)

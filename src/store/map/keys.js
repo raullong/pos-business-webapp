@@ -1,6 +1,6 @@
 const prefix = 'map/'
 
-export const MAP_LIST = prefix + 'list'
+export const USER_LIST = prefix + 'user/list'
 
 export const INFO_DATA = prefix + 'info/data'
 
